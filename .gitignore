@@ -1,0 +1,25 @@
+# Archivos generales de Git
+.DS_Store # Mac
+.env # Archivos de entorno (contraseñas, claves, etc.)
+
+# Node / Angular
+/frontend/sporthora-app/node_modules
+/frontend/sporthora-app/dist
+/frontend/sporthora-app/npm-debug.log*
+/frontend/sporthora-app/yarn-debug.log*
+/frontend/sporthora-app/yarn-error.log*
+/frontend/sporthora-app/.angular/cache
+/frontend/sporthora-app/.angular/
+/frontend/sporthora-app/*.tgz
+/frontend/sporthora-app/.idea/
+/frontend/sporthora-app/.vscode/ # <- Asegúrate de que esta línea esté, si VS Code crea una dentro del proyecto Angular
+
+# Python / Django
+/backend/venv/
+/backend/__pycache__/
+/backend/*.pyc
+/backend/*.sqlite3
+/backend/media/
+/backend/static/
+/backend/.vscode/ # <- Esta es para la carpeta .vscode de la raíz del backend
+/backend/.ipynb_checkpoints/
