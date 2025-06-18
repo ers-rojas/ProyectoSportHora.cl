@@ -24,12 +24,11 @@ class CentroDeportivo(models.Model):
     telefono = models.CharField(max_length=15, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
     descripcion = models.TextField(blank=True, null=True)
+    rut = models.CharField(max_length=12, blank=True, null=True)
     latitud = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True) # Para coordenadas GPS
     longitud = models.DecimalField(max_digits=9, decimal_places=6, blank=True, null=True) # Para coordenadas GPS
-    # Podrías añadir un campo para el propietario del centro (un Usuario de tipo 'admin' o 'cliente_empresa')
-    # Por ejemplo, si un usuario es el "dueño" del centro:
-    # propietario = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True, blank=True, related_name='centros_propietario')
-
+    propietario = models.ForeignKey(Usuario, on_delete=models.SET_NULL, null=True, blank=True, related_name='centros_propietario')
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         db_table = 'CentroDeportivo' # Nombre de la tabla explícito

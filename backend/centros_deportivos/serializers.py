@@ -7,6 +7,7 @@ class CentroDeportivoSerializer(serializers.ModelSerializer):
     class Meta:
         model = CentroDeportivo
         fields = '__all__'
+        read_only_fields = ("created_at",)
 
 # Nuevo Serializer para Cancha
 class CanchaSerializer(serializers.ModelSerializer):

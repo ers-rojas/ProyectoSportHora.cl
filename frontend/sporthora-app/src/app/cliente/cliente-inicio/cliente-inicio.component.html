@@ -83,7 +83,7 @@
     <div class="card mt-4">
       <div class="card-header"><strong>Historial de Reservas</strong></div>
       <div class="table-responsive">
-        <table class="table table-striped table-sm mb-0">
+        <table class="table" *ngIf="reservasPorDeporte.labels?.length">
           <thead>
             <tr>
               <th>Nombre de Usuario</th>
@@ -93,13 +93,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let r of [
-              {u:'Juan Pérez', f:'18/03/2025', c:'Fútbol 11', e:'Confirmado'},
-              {u:'Ana Gómez', f:'19/03/2025', c:'Padel', e:'Cancelada'},
-              {u:'Luis Martínez', f:'20/03/2025', c:'Tenis', e:'Confirmado'},
-              {u:'Sofía Herrera', f:'21/03/2025', c:'Básquetbol', e:'Pendiente'}]">
-              <td>{{ r.u }}</td><td>{{ r.f }}</td><td>{{ r.c }}</td><td>{{ r.e }}</td>
-            </tr>
+            <!-- filas dinámicas en próxima fase -->
           </tbody>
         </table>
         <nav *ngIf="(reservasPorDeporte.labels?.length || 0) > 0" aria-label="Paginación historial" class="mt-2">

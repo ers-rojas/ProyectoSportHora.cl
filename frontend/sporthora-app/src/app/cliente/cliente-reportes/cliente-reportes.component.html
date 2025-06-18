@@ -55,19 +55,8 @@
           </div>
         </div>
       </div>
-      <div class="metrics-row d-flex flex-wrap gap-2 text-center mt-2">
-        <div class="flex-fill mb-2" style="min-width:150px;" *ngFor="let card of [
-          {t:'Total reservas',v:totalReservas},
-          {t:'Reservas confirmadas',v:reservasConfirmadas},
-          {t:'Reservas canceladas',v:reservasCanceladas},
-          {t:'Ingresos totales',v:ingresosTotales | currency:'CLP':'symbol':'1.0'},
-          {t:'Crecimiento Mensual',v:crecimientoMensual+'%'}
-        ]">
-          <div class="summary-card py-3">
-            <small class="text-uppercase">{{ card.t }}</small>
-            <h3 class="m-0 font-weight-bold">{{ card.v }}</h3>
-          </div>
-        </div>
+      <div class="metrics-row d-flex flex-wrap gap-2 text-center mt-2" *ngIf="totalReservas">
+        <!-- Render dinámico cuando haya datos -->
       </div>
     </div>
 
@@ -82,20 +71,13 @@
             </tr>
           </thead>
           <tbody>
+            <tr *ngIf="!registros.length"><td colspan="4" class="text-center">Sin datos</td></tr>
             <tr *ngFor="let r of registros">
               <td>{{ r.fecha }}</td><td>{{ r.nombre }}</td><td>{{ r.pago }}</td><td>{{ r.detalle }}</td>
             </tr>
           </tbody>
         </table>
-        <nav aria-label="Paginación reportes" class="mt-2">
-          <ul class="pagination pagination-sm justify-content-center mb-0">
-            <li class="page-item disabled"><span class="page-link">‹ atrás</span></li>
-            <li class="page-item active"><span class="page-link">1</span></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-            <li class="page-item"><a class="page-link" href="javascript:void(0)">siguiente ›</a></li>
-          </ul>
-        </nav>
+        <!-- paginación dinámica futura -->
       </div>
     </div>
   </main>

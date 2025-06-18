@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // <-- ¡Añadido!
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +24,8 @@ import { ClienteFormComponent } from './cliente-form/cliente-form.component';
     BrowserAnimationsModule, // <-- ¡Añadido a los imports!
     CarouselModule.forRoot(), // <-- ¡Añadido a los imports!
     BsDropdownModule.forRoot(), // <-- ¡Añadido a los imports!
-    CollapseModule.forRoot() // <-- ¡Añadido a los imports!
+    CollapseModule.forRoot(), // <-- ¡Añadido a los imports!
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

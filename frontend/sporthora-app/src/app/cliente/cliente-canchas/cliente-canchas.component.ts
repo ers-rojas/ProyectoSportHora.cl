@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
+import { ChartConfiguration, ChartData } from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 import { RouterModule } from '@angular/router';
+import { ClienteApiService } from '../services/cliente-api.service';
 
 interface Cancha {
   nombre: string;
@@ -23,16 +24,7 @@ interface Cancha {
 export class ClienteCanchasComponent {
   mostrarTabla = true;
 
-  canchas: Cancha[] = [
-    { nombre: 'Fútbol 11 Norte', numero: 10, tipo: 'Fútbol', estado: 'Disponible', ultimaMantencion: '12/03/2025', proximaMantencion: '15/04/2025' },
-    { nombre: 'Padel Techado', numero: 21, tipo: 'Padel', estado: 'Mantenimiento', ultimaMantencion: '05/03/2025', proximaMantencion: '30/03/2025' },
-    { nombre: 'Tenis Cemento', numero: 25, tipo: 'Tenis', estado: 'Disponible', ultimaMantencion: '20/02/2025', proximaMantencion: '20/04/2025' },
-    { nombre: 'Fútbito Sur', numero: 11, tipo: 'Fútbol', estado: 'Cerrado', ultimaMantencion: '28/02/2025', proximaMantencion: '-' },
-    { nombre: 'Básquetbol Central', numero: 13, tipo: 'Básquetbol', estado: 'Disponible', ultimaMantencion: '15/02/2025', proximaMantencion: '15/05/2025' },
-    { nombre: 'Padel Outdoor', numero: 22, tipo: 'Padel', estado: 'Mantenimiento', ultimaMantencion: '01/03/2025', proximaMantencion: '01/04/2025' },
-    { nombre: 'Multicancha 1', numero: 31, tipo: 'Multicancha', estado: 'Disponible', ultimaMantencion: '10/03/2025', proximaMantencion: '10/06/2025' },
-    { nombre: 'Tenis Rápido', numero: 26, tipo: 'Tenis', estado: 'Cerrado', ultimaMantencion: '22/02/2025', proximaMantencion: '-' }
-  ];
+  canchas: Cancha[] = [];
 
   get totalCanchas() { return this.canchas.length; }
   get canchasDisponibles() { return this.canchas.filter(c => c.estado === 'Disponible').length; }
@@ -40,13 +32,7 @@ export class ClienteCanchasComponent {
   get canchasCerradas() { return this.canchas.filter(c => c.estado === 'Cerrado').length; }
 
   // Gráfico 1: distribución por estado (torta)
-  chartEstado: ChartData<'doughnut'> = {
-    labels: ['Disponibles', 'En mantención', 'Cerradas'],
-    datasets: [{
-      data: [this.canchasDisponibles, this.canchasMantenimiento, this.canchasCerradas],
-      backgroundColor: ['#4caf50', '#ffc107', '#d32f2f']
-    }]
-  };
+  chartEstado: ChartData<'doughnut'> = { labels: [], datasets: [] };
 
   optionsDoughnut: ChartConfiguration<'doughnut'>['options'] = {
     responsive: true,
@@ -55,10 +41,7 @@ export class ClienteCanchasComponent {
   };
 
   // Gráfico 2: mantenciones programadas por mes
-  chartMantenciones: ChartData<'bar'> = {
-    labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo'],
-    datasets: [{ data: [4, 3, 2, 1, 0], backgroundColor: '#9e9e9e' }]
-  };
+  chartMantenciones: ChartData<'bar'> = { labels: [], datasets: [] };
 
   optionsBar: ChartConfiguration<'bar'>['options'] = {
     responsive: true,
@@ -68,13 +51,20 @@ export class ClienteCanchasComponent {
   };
 
   // Gráfico 3: utilización por tipo de cancha
-  chartUtilizacion: ChartData<'bar'> = {
-    labels: ['Fútbol', 'Pádel', 'Tenis', 'Básquetbol', 'Multicancha'],
-    datasets: [{ data: [85, 75, 60, 90, 50], backgroundColor: '#9e9e9e' }]
-  };
+  chartUtilizacion: ChartData<'bar'> = { labels: [], datasets: [] };
 
   // El tipo más utilizado (para texto al costado)
-  canchaMasUtilizada = 'Básquetbol (90%)';
+  canchaMasUtilizada = '';
+
+  constructor(private api: ClienteApiService) {
+    this.cargar();
+  }
+
+  private cargar() {
+    this.api.getCanchas().subscribe((data:any)=>{
+      this.canchas = data;
+    });
+  }
 
   toggleVista(tabla: boolean) {
     this.mostrarTabla = tabla;

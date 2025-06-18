@@ -40,7 +40,11 @@ const routes: Routes = [
     path: 'cliente-pagos',
     loadChildren: () => import('./cliente/cliente-pagos/cliente-pagos.module').then(m => m.ClientePagosModule)
   },
-  { path: '', redirectTo: 'auth', pathMatch: 'full' }, // Redirige a /auth/login por defecto
+  {
+    path: 'cliente-registro',
+    loadChildren: () => import('./cliente/cliente-registro/cliente-registro.module').then(m => m.ClienteRegistroModule)
+  },
+  { path: '', redirectTo: 'home', pathMatch: 'full' }, // Redirige a /home por defecto
   // { path: '**', component: NotFoundComponent } // Opcional: para manejar rutas no encontradas
 ];
 

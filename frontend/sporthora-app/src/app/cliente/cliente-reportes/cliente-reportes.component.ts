@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgChartsModule } from 'ng2-charts';
 import { ChartConfiguration, ChartData } from 'chart.js';
+import { ClienteApiService } from '../services/cliente-api.service';
 
 interface Registro {
   fecha: string;
@@ -20,40 +21,44 @@ interface Registro {
 })
 export class ClienteReportesComponent {
   // Gráfico lineal reservas mensuales
-  lineReservas: ChartData<'line'> = {
-    labels:['Enero','Febrero','Marzo','Abril','Mayo','Junio'],
-    datasets:[{ data:[300,450,400,600,550,700], fill:false, borderColor:'#000', tension:0.4 }]
-  };
+  lineReservas: ChartData<'line'> = { labels: [], datasets: [] };
   optionsLine: ChartConfiguration<'line'>['options'] = {responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}};
 
   // Gráfico de torta: estado de reservas
   pieLabels=['Confirmadas','Canceladas','Pendientes','Finalizadas'];
-  pieValues=[7353,1292,511,124];
-  pieData: ChartData<'pie', number[], string> = {
-    labels:this.pieLabels,
-    datasets:[{ data:this.pieValues, backgroundColor:['#4CAF50','#FF5252','#FFC107','#9E9E9E'] }]
-  };
+  pieData: ChartData<'pie', number[], string> = { labels: [], datasets: [] };
   pieOptions: ChartConfiguration<'pie'>['options'] = {
     responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}};
 
   // Métricas
-  totalReservas=12042;
-  reservasConfirmadas=9500;
-  reservasCanceladas=2100;
-  ingresosTotales=8750000;
-  crecimientoMensual=12.5;
+  totalReservas=0;
+  reservasConfirmadas=0;
+  reservasCanceladas=0;
+  ingresosTotales=0;
+  crecimientoMensual=0;
 
   // tabla de registros demo
-  registros: Registro[] = [
-    {fecha:'2024-06-01',nombre:'Juan Pérez',pago:'Webpay',detalle:'Cancha Fútbol 7 - Confirmada'},
-    {fecha:'2024-06-02',nombre:'Ana Gómez',pago:'Transferencia',detalle:'Cancha Pádel - Cancelada'},
-    {fecha:'2024-06-02',nombre:'Luis Martínez',pago:'Efectivo',detalle:'Cancha Tenis - Pendiente'},
-    {fecha:'2024-06-03',nombre:'Sofía Herrera',pago:'Webpay',detalle:'Cancha Básquetbol - Confirmada'},
-    {fecha:'2024-06-04',nombre:'Diego Torres',pago:'Webpay',detalle:'Cancha Básquetbol - Confirmada'},
-    {fecha:'2024-06-05',nombre:'Carolina Rojas',pago:'Efectivo',detalle:'3 Bebidas Isotónicas'},
-  ];
+  registros: Registro[] = [];
 
   mostrarTabla=true;
 
   toggleVista(t:boolean){this.mostrarTabla=t;}
+
+  datosResumen:any[] = [];
+
+  reservasMensuales: ChartData<'line'> = { labels: [], datasets: [] };
+
+  ingresosMensuales: ChartData<'bar'> = { labels: [], datasets: [] };
+
+  ocupacionPorDeporte: ChartData<'pie', number[], string> = { labels: [], datasets: [] };
+
+  constructor(private api: ClienteApiService) {
+    this.cargar();
+  }
+
+  private cargar(){
+    this.api.getReportes().subscribe((data:any)=>{
+      // asignar datos
+    });
+  }
 } 

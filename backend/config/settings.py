@@ -89,11 +89,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sporthora_db',        # Nombre de tu base de datos MySQL (ya la creaste)
-        'USER': 'root',               # Tu usuario de MySQL
-        'PASSWORD': 'rootsam2025',     # Tu contraseña de MySQL
-        'HOST': 'localhost',          # O la IP/nombre de tu servidor MySQL
-        'PORT': '3306',               # Puerto de MySQL (el predeterminado es 3306)
+        'NAME': 'sporthora_db',        # Nombre base de datos MySQL
+        'USER': 'root',               # usuario de MySQL
+        'PASSWORD': 'rootsam2025',     # contraseña de MySQL
+        'HOST': 'localhost',          # IP/nombre servidor MySQL
+        'PORT': '3306',               # Puerto de MySQL 
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         }
