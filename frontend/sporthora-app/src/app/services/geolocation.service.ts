@@ -46,4 +46,36 @@ export class GeolocationService {
   getError(): Observable<string | null> {
     return this.error$.asObservable();
   }
+
+  /** Devuelve una Promise con las coordenadas actuales (o error) */
+  getCurrentCoords(): Promise<Coordinates> {
+    return new Promise((resolve, reject) => {
+      if (this.coords$.value) {
+        resolve(this.coords$.value);
+        return;
+      }
+      if (!navigator.geolocation) {
+        reject('Navegador sin geolocalización');
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const c: Coordinates = {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+            accuracy: pos.coords.accuracy,
+          };
+          this.coords$.next(c);
+          resolve(c);
+        },
+        (err) => reject(err),
+        { enableHighAccuracy: true, maximumAge: 300000, timeout: 10000 }
+      );
+    });
+  }
+
+  reset(): void {
+    this.coords$.next(null);
+    this.error$.next(null);
+  }
 } 

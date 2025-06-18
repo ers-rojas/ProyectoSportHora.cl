@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // <-- ¡Añadido!
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel'; // <-- ¡Añadido!
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; // <-- ¡Añadido!
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { ClienteFormComponent } from './cliente-form/cliente-form.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,13 @@ import { ClienteFormComponent } from './cliente-form/cliente-form.component';
     CollapseModule.forRoot(), // <-- ¡Añadido a los imports!
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

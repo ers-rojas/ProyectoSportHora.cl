@@ -7,6 +7,8 @@ from rest_framework.permissions import IsAdminUser, AllowAny, IsAuthenticated # 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.contrib.auth import authenticate
+from rest_framework.authtoken.models import Token
 
 class UsuarioViewSet(viewsets.ModelViewSet):
     """
@@ -66,5 +68,40 @@ class RegistroClienteAPIView(APIView):
         # Podrías guardar teléfono en otro modelo; por ahora se ignora
 
         return Response({'id': user.id, 'cliente_id': cliente.pk}, status=status.HTTP_201_CREATED)
+
+# ---------------------- LOGIN ----------------------
+
+class LoginAPIView(APIView):
+    """
+    Autentica con email y password. Devuelve token y tipo de usuario (cliente o usuario).
+    """
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        email = request.data.get('email')
+        password = request.data.get('password')
+
+        if not email or not password:
+            return Response({'detail': 'Email y password requeridos'}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Usamos email como username ya que en registro usamos username=email
+        user = authenticate(request, username=email, password=password)
+
+        if user is None:
+            return Response({'detail': 'Credenciales inválidas'}, status=status.HTTP_401_UNAUTHORIZED)
+
+        # Generar o recuperar token
+        token, _ = Token.objects.get_or_create(user=user)
+
+        # Determinar tipo de cuenta
+        user_type = 'cliente' if hasattr(user, 'cliente') else 'usuario'
+
+        return Response({
+            'token': token.key,
+            'user_type': user_type,
+            'user_id': user.id,
+            'username': user.username,
+            'email': user.email,
+        })
 
 # Aquí podríamos añadir más ViewSets para otros modelos si fuera necesario en la app 'users'

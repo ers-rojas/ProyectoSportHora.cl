@@ -2,4 +2,31 @@
   .form-control.ng-invalid.ng-touched {
     border-color: #d32f2f;
   }
+}
+
+.group-hover {
+  position: relative;
+
+  .tooltip-hint {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: translateY(4px);
+    background: #f8f9fa;
+    color: #343a40;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 0.85rem;
+    width: max-content;
+    max-width: 260px;
+    z-index: 10;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+  }
+
+  &:hover .tooltip-hint,
+  &:focus-within .tooltip-hint {
+    display: block;
+  }
 } 

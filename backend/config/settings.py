@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os, requests
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -49,7 +50,7 @@ INSTALLED_APPS = [
     'suscripciones', 
     'pagos',
     'reportes',
-
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -145,8 +146,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Configuración de CORS
 CORS_ALLOW_ALL_ORIGINS = False # Mejor especificar orígenes permitidos por seguridad
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:4200",  # Origen de tu aplicación Angular
-    "http://127.0.0.1:4200", # Por si acaso usa 127.0.0.1, muy común
+    "http://localhost:4200",  
+    "http://127.0.0.1:4200", # Por si acaso usamos 127.0.0.1, muy común
 ]
 CORS_ALLOW_HEADERS = [
     'accept',
@@ -170,3 +171,13 @@ CORS_ALLOW_METHODS = [
 
 # Configuración del modelo de Usuario personalizado
 AUTH_USER_MODEL = 'users.Usuario'
+
+# Configuración DRF Auth Token
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+}

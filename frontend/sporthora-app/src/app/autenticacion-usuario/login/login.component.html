@@ -8,12 +8,12 @@
 <!-- Main login area -->
 <div class="d-flex flex-column align-items-center py-5 login-container">
   <h5 class="mb-4 font-weight-normal">Ingresa tu email y clave</h5>
-  <form class="w-100" style="max-width:420px;">
+  <form class="w-100" style="max-width:420px;" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group mb-3">
-      <input type="email" class="form-control" placeholder="Email" required>
+      <input type="email" formControlName="email" class="form-control" placeholder="Email" required>
     </div>
     <div class="form-group mb-2 position-relative">
-      <input [type]="showPassword ? 'text' : 'password'" class="form-control" placeholder="Clave" required>
+      <input [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-control" placeholder="Clave" required>
       <img class="toggle-pass" (click)="togglePassword()" [src]="showPassword ? '/assets/images/ICONOojoCerrado.png' : '/assets/images/ICONOojoAbierto.png'" alt="toggle" />
     </div>
 

@@ -12,4 +12,30 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #fff;
+}
+
+.group-hover {
+  position: relative;
+
+  .tooltip-hint {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transform: translateY(4px);
+    background: #f8f9fa;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 6px 8px;
+    font-size: 0.85rem;
+    max-width: 260px;
+    color: #343a40;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+    z-index: 10;
+  }
+
+  &:hover .tooltip-hint,
+  &:focus-within .tooltip-hint {
+    display: block;
+  }
 } 
