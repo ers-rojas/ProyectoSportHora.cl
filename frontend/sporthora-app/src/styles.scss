@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  background-color: #EAEAEA; /* Gris claro elegante para el fondo de la página */
+  margin: 0; /* Asegura que no haya márgenes por defecto en el body */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* Fuente estándar de Bootstrap para consistencia */
+}
+
+html, body {
+  height: 100%; /* Asegura que el body ocupe toda la altura */
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.navbar-custom-bg {
+  background-color: #343a40 !important; /* Gris oscuro personalizado para el navbar */
+}

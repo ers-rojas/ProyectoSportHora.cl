@@ -1,0 +1,19 @@
+$purple:#322d8b;
+$pink:#d72e92;
+
+.top-bar{box-shadow:0 1px 4px rgba(0,0,0,.08);position:sticky;top:0;z-index:10;}
+.notif-icon{width:24px;height:24px;cursor:pointer;}
+
+.bottom-nav{position:fixed;bottom:0;left:0;width:100%;background:#fff;border-top:1px solid #e0e0e0;z-index:20;
+  a{color:#555;font-size:.75rem;.nav-icon{width:22px;height:22px;} &.active,&:hover{color:$purple;}}
+}
+
+.centro-wrapper{padding-bottom:90px;}
+
+.filter-summary{background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.08);}
+
+.center-card{background:#fff;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,.1);
+  .card-img{height:180px;border-top-left-radius:8px;border-top-right-radius:8px;background-size:cover;background-position:center;position:relative;
+    .fav-btn{position:absolute;top:8px;right:8px;border:none;background:rgba(255,255,255,.8);border-radius:50%;width:36px;height:36px;cursor:pointer;}
+  }
+} 

@@ -1,0 +1,39 @@
+/* src/app/home/home-page.component.scss */
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.logo {
+  margin-right: 10px;
+}
+
+.carousel-caption h5,
+.carousel-caption p {
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.jumbotron {
+  border-radius: 0;
+  h1, p, a {
+    z-index: 1;
+    position: relative;
+  }
+}
+
+.card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  .card-img-top {
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+} 

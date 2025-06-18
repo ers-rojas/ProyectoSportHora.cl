@@ -1,0 +1,84 @@
+<!-- Header -->
+<header class="top-bar d-flex align-items-center justify-content-center px-3 py-2 bg-white position-sticky">
+  <h5 class="logo-text mr-auto mb-0 font-weight-bold">SportHora.cl</h5>
+  <img src="/assets/images/ICONOnotificacion.png" alt="Notificaciones" class="notif-icon ml-auto" />
+</header>
+
+<!-- Main -->
+<main class="content-wrapper d-flex flex-column align-items-center py-4">
+  <h5 class="title mb-4 font-weight-bold">MIS RESERVAS</h5>
+
+  <!-- Tabs nivel 1 -->
+  <div class="pill-box mb-4">
+    <ul class="nav nav-pills reservas-tabs w-100 justify-content-between">
+      <li class="nav-item"><a class="nav-link" [class.active]="mainTab==='reservas'" (click)="selectMain('reservas')">Reservas</a></li>
+      <li class="nav-item"><a class="nav-link" [class.active]="mainTab==='partidos'" (click)="selectMain('partidos')">Partidos</a></li>
+    </ul>
+  </div>
+
+  <!-- Sólo mostramos subtabs si mainTab es reservas -->
+  <ng-container *ngIf="mainTab==='reservas'">
+    <ul class="nav nav-underline mb-4 sub-tabs">
+      <li class="nav-item"><a class="nav-link" [class.active]="subTab==='activas'" (click)="selectSub('activas')">Activas</a></li>
+      <li class="nav-item"><a class="nav-link" [class.active]="subTab==='porPagar'" (click)="selectSub('porPagar')">Por pagar</a></li>
+      <li class="nav-item"><a class="nav-link" [class.active]="subTab==='pasadas'" (click)="selectSub('pasadas')">Pasadas</a></li>
+    </ul>
+
+    <!-- Contenido segun subTab -->
+    <div *ngIf="subTab==='activas'" class="empty-state text-center">
+      <div class="emoji mb-3">😔</div>
+      <p class="mb-2 font-weight-bold">No tienes reservas activas</p>
+      <p class="mb-4 font-weight-bold">RESERVA AHORA</p>
+      <button class="btn btn-success btn-block px-5" style="max-width:260px; background:#4caf50; border:none; border-radius:24px;">Reserva aquí</button>
+    </div>
+
+    <div *ngIf="subTab==='porPagar'" class="empty-state text-center">
+      <div class="emoji mb-3">💪</div>
+      <p class="mb-2 font-weight-bold">¡ Muy bien !</p>
+      <p class="mb-4 font-weight-bold">NO TIENES RESERVAS POR PAGAR</p>
+    </div>
+
+    <div *ngIf="subTab==='pasadas'" class="empty-state text-center">
+      <!-- Selects -->
+      <div class="d-flex justify-content-center mb-4 selects-row flex-wrap">
+        <select class="form-control mx-2 mb-3" style="max-width:300px;" [(ngModel)]="selectedMonth">
+          <option value="" selected disabled>Mes</option>
+          <option *ngFor="let m of months" [ngValue]="m">{{ m }}</option>
+        </select>
+        <select class="form-control mx-2 mb-3" style="max-width:300px;" [(ngModel)]="selectedYear">
+          <option value="" selected disabled>Año</option>
+          <option *ngFor="let y of years" [ngValue]="y">{{ y }}</option>
+        </select>
+      </div>
+
+      <div class="emoji mb-3">📅</div>
+      <p class="mb-2 font-weight-bold">¿Qué fecha estás buscando?</p>
+      <p class="mb-4 font-weight-bold">SELECCIONA UN MES Y UN AÑO</p>
+    </div>
+  </ng-container>
+
+  <!-- Contenido Partidos -->
+  <ng-container *ngIf="mainTab==='partidos'">
+    <h5 class="text-center w-100 mb-3 font-weight-bold">Tus Partidos</h5>
+    <div class="empty-state text-center">
+      <p class="mb-3 font-weight-bold">No hay partidos disponibles</p>
+      <p class="mb-0" style="max-width:500px; margin:0 auto;">No hay partidos activos en este momento. Únete a un partido abierto y juega con otros jugadores.</p>
+    </div>
+  </ng-container>
+</main>
+
+<!-- Bottom navigation same as inicio -->
+<footer class="bottom-nav d-flex justify-content-around px-3 py-2">
+  <a routerLink="/usuario" class="nav-item text-center text-dark">
+    <img src="/assets/images/ICONOgps.png" alt="Inicio" class="nav-icon"><br>
+    <small>INICIO</small>
+  </a>
+  <a routerLink="/usuario/reservas" class="nav-item text-center text-dark">
+    <img src="/assets/images/ICONOreservar.png" alt="Reservas" class="nav-icon"><br>
+    <small>RESERVAS</small>
+  </a>
+  <a routerLink="/usuario/perfil" class="nav-item text-center text-dark">
+    <img src="/assets/images/ICONOperfil.png" alt="Perfil" class="nav-icon"><br>
+    <small>PERFIL</small>
+  </a>
+</footer> 

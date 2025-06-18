@@ -1,0 +1,108 @@
+<div class="layout d-flex">
+  <!-- Sidebar (idéntica a cliente-inicio) -->
+  <aside class="sidebar d-flex flex-column p-3">
+    <h4 class="brand mb-4">SportHora</h4>
+    <nav class="flex-grow-1">
+      <ul class="list-unstyled">
+        <li><a routerLink="/cliente" class="nav-link">Inicio</a></li>
+        <li><a routerLink="/cliente-reservas" class="nav-link active">Reservas</a></li>
+        <li><a routerLink="/cliente-canchas" class="nav-link">Cancha</a></li>
+        <li><a routerLink="/cliente-reportes" class="nav-link">Reportes</a></li>
+        <li><a routerLink="/cliente-pagos" class="nav-link">Pagos</a></li>
+      </ul>
+    </nav>
+    <hr>
+    <ul class="list-unstyled mb-auto">
+      <li><a routerLink="#" class="nav-link">Configuración</a></li>
+      <li><a routerLink="#" class="nav-link">Notificaciones</a></li>
+      <li><a routerLink="#" class="nav-link">Buscar</a></li>
+      <li><a routerLink="#" class="nav-link">Ayuda</a></li>
+    </ul>
+    <div class="profile mt-auto pt-3 border-top">
+      <a routerLink="#" class="nav-link">Perfil</a>
+    </div>
+  </aside>
+
+  <!-- Contenido principal -->
+  <main class="content flex-grow-1 p-4">
+    <h2 class="mb-1">Gestión de Reservas</h2>
+    <p class="text-muted mb-4">Visualiza y administra todas las reservas realizadas en tus canchas.<br>Filtra por fecha, cancha y estado.</p>
+
+    <!-- Cuadro principal -->
+    <div class="card p-3">
+      <div class="d-flex align-items-center mb-3 gap-2 flex-wrap">
+        <div class="btn-group" role="group">
+          <button type="button" class="btn btn-sm btn-outline-dark" [class.active]="mostrarTabla" (click)="toggleVista(true)">Tabla</button>
+          <button type="button" class="btn btn-sm btn-outline-dark" [class.active]="!mostrarTabla" (click)="toggleVista(false)">Gráfico</button>
+        </div>
+
+        <!-- Controles de filtro/orden -->
+        <div class="d-flex align-items-center gap-2">
+          <button class="btn btn-sm btn-outline-secondary">Filtrar por</button>
+          <button class="btn btn-sm btn-outline-secondary">Ordenar por</button>
+        </div>
+
+        <!-- Buscador centrado -->
+        <div class="flex-grow-1 d-flex justify-content-center">
+          <input type="text" class="form-control form-control-sm" placeholder="Buscar" style="max-width:220px;">
+        </div>
+
+        <!-- Acción principal a la derecha -->
+        <button class="btn btn-sm btn-dark ms-auto" style="white-space:nowrap;">+ Añadir reserva</button>
+      </div>
+
+      <!-- Tabla de datos -->
+      <div *ngIf="mostrarTabla" class="table-responsive">
+        <table class="table table-striped table-bordered mb-0 small">
+          <thead class="thead-light">
+            <tr>
+              <th>#</th>
+              <th>Usuario</th>
+              <th>Fecha</th>
+              <th>Hora</th>
+              <th>Cancha</th>
+              <th>Tipo Cancha</th>
+              <th>Estado</th>
+              <th>Duración</th>
+              <th>Precio</th>
+              <th>Método de Pago</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of reservas; index as i">
+              <td>{{ i+1 }}</td>
+              <td>{{ r.usuario }}</td>
+              <td>{{ r.fecha }}</td>
+              <td>{{ r.hora }}</td>
+              <td>{{ r.cancha }}</td>
+              <td>{{ r.tipo }}</td>
+              <td>{{ r.estado }}</td>
+              <td>{{ r.duracion }}</td>
+              <td>{{ r.precio }}</td>
+              <td>{{ r.metodo }}</td>
+              <td>
+                <a href="javascript:void(0)" class="text-dark"><i class="fas fa-eye"></i> Ver</a> /
+                <a href="javascript:void(0)" class="text-dark"><i class="fas fa-edit"></i> Editar</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <nav aria-label="Paginación reservas" class="mt-2">
+          <ul class="pagination pagination-sm justify-content-center mb-0">
+            <li class="page-item disabled"><span class="page-link">‹ atrás</span></li>
+            <li class="page-item active"><span class="page-link">1</span></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0)">siguiente ›</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Gráfico -->
+      <div *ngIf="!mostrarTabla" style="height: 400px;">
+        <canvas baseChart [data]="graficoReservas" [options]="opcionesGrafico" chartType="bar"></canvas>
+      </div>
+    </div>
+  </main>
+</div> 

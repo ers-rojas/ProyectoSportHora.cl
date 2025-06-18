@@ -1,0 +1,127 @@
+/* Paleta de colores aproximada */
+$purple: #322d8b;
+$green: #8cc63f;
+$orange: #ff931e;
+$gray: #808080;
+$pink: #d72e92;
+
+.container {
+  /* Otros estilos globales */
+}
+
+.greeting-container {
+  text-align: left;
+}
+
+.top-bar {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  z-index: 10;
+}
+
+.greeting {
+  font-size: 1.3rem;
+}
+
+.category-card {
+  border-radius: 8px;
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+  &:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  }
+  h6 {
+    font-weight: 700;
+    z-index: 2;
+  }
+  .icon-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
+.bg-purple { background-color: $purple; }
+.bg-green { background-color: $green; }
+.bg-orange { background-color: $orange; }
+.bg-gray   { background-color: $gray; }
+
+/* PRIME banner */
+.prime-card {
+  background: linear-gradient(135deg, #eb4897 0%, #d72e92 100%);
+  border-radius: 12px;
+  .prime-title { line-height: 1.1; }
+  .prime-free-month {
+    background-color: #5a3bcf;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+}
+
+/* Bottom spacing so footer nav no tape contenido */
+.content-wrapper {
+  padding-bottom: 90px;
+}
+
+.deportes-card {
+  background-image: url('/assets/images/SIUUUUU.gif');
+  background-size: cover;
+  background-position: center;
+}
+
+.centros-card {
+  background-image: url('/assets/images/CentroDeportivo.gif');
+  background-size: cover;
+  background-position: center;
+}
+
+.eventos-card {
+  background-image: url('/assets/images/Eventos.gif');
+  background-size: cover;
+  background-position: center;
+}
+
+.promo-card {
+  background-image: url('/assets/images/Promo.gif');
+  background-size: cover;
+  background-position: center;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #e0e0e0;
+  z-index: 20;
+  a {
+    color: #555;
+    font-size: 0.75rem;
+    .nav-icon {
+      width: 22px;
+      height: 22px;
+    }
+    &.active, &:hover {
+      color: $purple;
+    }
+  }
+}
+
+.notif-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+} 

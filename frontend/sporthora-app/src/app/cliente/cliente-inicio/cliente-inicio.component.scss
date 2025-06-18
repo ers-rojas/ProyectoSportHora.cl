@@ -1,0 +1,9 @@
+$sidebar-bg:#f7f7f7;
+$purple:#322d8b;
+
+.layout{min-height:100vh;}
+.sidebar{width:190px;background:$sidebar-bg;border-right:1px solid #ddd;position:fixed;top:0;bottom:0;left:0;overflow-y:auto;}
+.sidebar .nav-link{color:#333;padding:6px 0;display:block;&.active,&:hover{color:$purple;font-weight:700;}}
+.brand{font-weight:700;color:$purple;}
+.content{margin-left:190px;width:calc(100% - 190px);min-width:0;}
+.card{border:1px solid #e0e0e0;border-radius:8px;} 

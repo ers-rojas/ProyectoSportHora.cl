@@ -1,0 +1,117 @@
+<div class="layout d-flex">
+  <!-- Sidebar -->
+  <aside class="sidebar d-flex flex-column p-3">
+    <h4 class="brand mb-4">SportHora</h4>
+    <nav class="flex-grow-1">
+      <ul class="list-unstyled">
+        <li><a routerLink="/cliente" class="nav-link active">Inicio</a></li>
+        <li><a routerLink="/cliente-reservas" class="nav-link">Reservas</a></li>
+        <li><a routerLink="/cliente-canchas" class="nav-link">Cancha</a></li>
+        <li><a routerLink="/cliente-reportes" class="nav-link">Reportes</a></li>
+        <li><a routerLink="/cliente-pagos" class="nav-link">Pagos</a></li>
+      </ul>
+    </nav>
+    <hr>
+    <ul class="list-unstyled mb-auto">
+      <li><a routerLink="#" class="nav-link">Configuración</a></li>
+      <li><a routerLink="#" class="nav-link">Notificaciones</a></li>
+      <li><a routerLink="#" class="nav-link">Buscar</a></li>
+      <li><a routerLink="#" class="nav-link">Ayuda</a></li>
+    </ul>
+    <div class="profile mt-auto pt-3 border-top">
+      <a routerLink="#" class="nav-link">Perfil</a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="content flex-grow-1 p-4">
+    <h2 class="mb-4">Dashboard</h2>
+
+    <!-- Tarjetas superiores -->
+    <div class="row">
+      <div class="col-lg-6 mb-4">
+        <div class="card h-100 p-3">
+          <h6 class="mb-2 font-weight-bold">Reservas por deporte</h6>
+          <div style="height:200px;">
+            <canvas baseChart [data]="reservasPorDeporte" [options]="optionsBar" chartType="bar"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <div class="card h-100 p-3 d-flex flex-column">
+          <h6 class="mb-2 font-weight-bold">Estados de reservas</h6>
+          <div class="d-flex flex-grow-1">
+            <div style="flex:1; height:200px;">
+              <canvas baseChart [data]="estadosReservas" [options]="optionsBar" chartType="bar"></canvas>
+            </div>
+            <div class="d-flex flex-column justify-content-center align-items-center ml-3" style="min-width:120px;">
+              <h3 class="m-0 font-weight-bold">80%</h3>
+              <small class="text-muted text-center">Reservadas finalizadas con éxito</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mb-4">
+        <div class="card h-100 p-4 text-center">
+          <h6 class="font-weight-bold">Ingresos Totales del Mes</h6>
+          <h2 class="display-4 mb-1">{{ ingresosMes | currency:'USD':'symbol':'1.0' }}</h2>
+          <small class="text-muted">{{ variacionLabel }}</small>
+        </div>
+      </div>
+      <div class="col-lg-3 mb-4">
+        <div class="card h-100 p-3">
+          <h6 class="mb-2 font-weight-bold">Cancelaciones de Reservas</h6>
+          <div style="height:180px;">
+            <canvas baseChart [data]="cancelaciones" [options]="optionsDoughnut" chartType="doughnut"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 mb-4">
+        <div class="card h-100 p-3 d-flex flex-column">
+          <h6 class="font-weight-bold mb-2">Meta de Ingresos Mensuales</h6>
+          <h5>{{ ingresosMes | currency:'USD':'symbol':'1.0' }}</h5>
+          <small class="text-muted">Meta {{ metaIngresos | currency:'USD':'symbol':'1.0' }}</small>
+          <div class="progress mt-auto" style="height:10px;">
+            <div class="progress-bar bg-success" role="progressbar" [style.width.%]="progresoMeta"></div>
+          </div>
+          <small class="text-muted text-right mt-1">{{ progresoMeta }}%</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Historial de reservas -->
+    <div class="card mt-4">
+      <div class="card-header"><strong>Historial de Reservas</strong></div>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm mb-0">
+          <thead>
+            <tr>
+              <th>Nombre de Usuario</th>
+              <th>Fecha de Reserva</th>
+              <th>Cancha Reservada</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of [
+              {u:'Juan Pérez', f:'18/03/2025', c:'Fútbol 11', e:'Confirmado'},
+              {u:'Ana Gómez', f:'19/03/2025', c:'Padel', e:'Cancelada'},
+              {u:'Luis Martínez', f:'20/03/2025', c:'Tenis', e:'Confirmado'},
+              {u:'Sofía Herrera', f:'21/03/2025', c:'Básquetbol', e:'Pendiente'}]">
+              <td>{{ r.u }}</td><td>{{ r.f }}</td><td>{{ r.c }}</td><td>{{ r.e }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <nav *ngIf="(reservasPorDeporte.labels?.length || 0) > 0" aria-label="Paginación historial" class="mt-2">
+          <ul class="pagination pagination-sm justify-content-center mb-0">
+            <li class="page-item disabled"><span class="page-link">‹ atrás</span></li>
+            <li class="page-item active"><span class="page-link">1</span></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0)">siguiente ›</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </main>
+</div> 

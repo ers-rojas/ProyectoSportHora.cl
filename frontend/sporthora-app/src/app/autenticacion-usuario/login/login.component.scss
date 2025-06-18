@@ -1,0 +1,60 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+// Top bar
+.top-bar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.login-container {
+  background-color: #f5f5fa;
+  min-height: calc(100vh - 100px);
+  width: 100%;
+}
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  border-top: 1px solid #e5e5e5;
+}
+
+.bottom-nav .nav-item {
+  color: #666;
+  text-decoration: none;
+}
+
+.toggle-pass {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+
+.nav-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.bottom-nav .nav-item:hover {
+  color: #322d8b;
+} 

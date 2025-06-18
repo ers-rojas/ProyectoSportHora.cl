@@ -1,0 +1,40 @@
+<!-- Header con volver -->
+<header class="top-bar d-flex align-items-center px-3 py-2 bg-white">
+  <a routerLink="/usuario" class="d-flex align-items-center text-decoration-none text-secondary">
+    <span class="mr-1">&larr;</span> Volver
+  </a>
+  <img src="/assets/images/ICONOnotificacion.png" alt="Notificaciones" class="notif-icon ml-auto" />
+</header>
+
+<main class="content-wrapper d-flex flex-column align-items-center py-4">
+  <h4 class="section-title mb-4 font-weight-bold text-center">SELECCIONA UN DEPORTE</h4>
+
+  <section class="sports-grid w-100 px-3" style="max-width:800px;">
+    <div class="row no-gutters">
+      <!-- Futbolito -->
+      <div class="col-6 p-3 d-flex justify-content-center">
+        <a routerLink="/usuario/deporte-filtrar/futbolito" class="sport-card futbolito-card d-flex align-items-center justify-content-center text-decoration-none">
+          <h6 class="sport-label m-0">Futbolito</h6>
+        </a>
+      </div>
+      <!-- Fútbol 11 -->
+      <div class="col-6 p-3 d-flex justify-content-center">
+        <a routerLink="/usuario/deporte-filtrar/futbol-11" class="sport-card futbol-card d-flex align-items-center justify-content-center text-decoration-none">
+          <h6 class="sport-label m-0">Fútbol 11</h6>
+        </a>
+      </div>
+      <!-- Tenis -->
+      <div class="col-6 p-3 d-flex justify-content-center">
+        <a routerLink="/usuario/deporte-filtrar/tenis" class="sport-card tenis-card d-flex align-items-center justify-content-center text-decoration-none">
+          <h6 class="sport-label m-0">Tenis</h6>
+        </a>
+      </div>
+      <!-- Padel -->
+      <div class="col-6 p-3 d-flex justify-content-center">
+        <a routerLink="/usuario/deporte-filtrar/padel" class="sport-card padel-card d-flex align-items-center justify-content-center text-decoration-none">
+          <h6 class="sport-label m-0">Padel</h6>
+        </a>
+      </div>
+    </div>
+  </section>
+</main> 

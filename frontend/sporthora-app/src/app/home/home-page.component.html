@@ -1,0 +1,157 @@
+<!-- Hero único -->
+<section class="hero-section d-flex align-items-center justify-content-center text-center" style="background-image: url('assets/images/ImagenCarrousel2.jpg'); background-size:cover; background-position:center; height:90vh; position:relative;">
+  <div class="overlay" style="position:absolute; inset:0; background:rgba(0,0,0,0.45);"></div>
+  <div class="container position-relative text-white">
+    <h2 class="mb-4" style="font-weight:700;">SportHora</h2>
+    <h1 class="display-3 mb-4">El <span style="color:#ff2c7d;">Juego</span> Perfecto</h1>
+    <p class="lead mb-4">Con SportHora podrás reservar tus canchas del deporte que quieras, en el club que elijas y encontrar el mejor precio.</p>
+    <div class="d-flex flex-column flex-sm-row justify-content-center mb-4">
+      <a routerLink="/usuario" class="btn btn-light btn-lg mb-4">
+        🎾 Reserva tu cancha aquí
+      </a>
+    </div>
+
+    <!-- Banner para administradores de centro deportivo -->
+    <div class="club-banner d-flex align-items-center" routerLink="/cliente-form" style="cursor:pointer; background:#2f2f86; color:#fff; border-radius:8px; max-width:800px; padding:0.75rem 1.5rem; align-self:flex-start;">
+      <img src="assets/images/ICONOadmins.png" alt="Administradores" style="width:45px; height:45px; border-radius:50%; background:#fff; margin-right:15px; object-fit:cover;">
+      <span>Soy administrador o propietario de un centro deportivo, necesito información para unirme a SportHora.</span>
+    </div>
+  </div>
+</section>
+
+<section class="py-5" style="background-color:#f5f7fa;">
+  <div class="container">
+    <h2 class="text-center mb-2" style="font-weight:700; color:#1f3344;">Características Principales</h2>
+    <p class="text-center mb-4" style="color:#40566b;">En pocos pasos, con nuestra web podrás reservar tu espacio para practicar tu deporte favorito.</p>
+    <hr style="width:60px; border:2px solid #2f2f86; margin:0 auto 40px;">
+    <div class="row justify-content-center">
+      <!-- Card 1 -->
+      <div class="col-md-6 col-lg-6 mb-4">
+        <div class="card h-100 border-0" style="border-radius:10px;">
+          <div class="card-body text-center">
+            <img src="assets/images/9.png" alt="Reservas en línea" style="width: 90px; height: 90px; margin-bottom: 25px;">
+            <h5 class="card-title" style="font-weight:600; color:#1f3344;">Reservas tus canchas en línea</h5>
+            <p class="card-text" style="color:#40566b;">Selecciona tu deporte y/o centro deportivo, elige la hora y reserva tu cancha.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-md-6 col-lg-6 mb-4">
+        <div class="card h-100 border-0" style="border-radius:10px;">
+          <div class="card-body text-center">
+            <img src="assets/images/8.png" alt="Agenda" style="width: 90px; height: 90px; margin-bottom: 25px;">
+            <h5 class="card-title" style="font-weight:600; color:#1f3344;">Agenda automáticamente en tu calendario</h5>
+            <p class="card-text" style="color:#40566b;">Al reservar, te enviaremos un correo que agendará automáticamente tu partido.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-md-6 col-lg-6 mb-4">
+        <div class="card h-100 border-0" style="border-radius:10px;">
+          <div class="card-body text-center">
+            <img src="assets/images/6.png" alt="Precio" style="width: 90px; height: 90px; margin-bottom: 25px;">
+            <h5 class="card-title" style="font-weight:600; color:#1f3344;">Encuentra el mejor precio</h5>
+            <p class="card-text" style="color:#40566b;">Compara entre tus centros deportivos más cercanos y reserva en el que más te convenga.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="col-md-6 col-lg-6 mb-4">
+        <div class="card h-100 border-0" style="border-radius:10px;">
+          <div class="card-body text-center">
+            <img src="assets/images/7.png" alt="Pago" style="width: 90px; height: 90px; margin-bottom: 25px;">
+            <h5 class="card-title" style="font-weight:600; color:#1f3344;">Paga en línea o cuando llegues al club</h5>
+            <p class="card-text" style="color:#40566b;">Puedes pagar en línea con WebPay One Click o simplemente reserva y paga cuando llegues al club.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="club-cta-section d-flex align-items-center justify-content-center text-center" style="background-image:url('assets/images/CanchaDeportivaHome2.webp'); background-size:cover; background-position:center; height:80vh; position:relative;">
+  <div class="overlay" style="position:absolute; inset:0; background:rgba(0,0,0,0.55);"></div>
+  <div class="container position-relative text-white">
+    <h2 class="mb-3" style="font-weight:700;">¿Tienes un centro deportivo?</h2>
+    <p class="lead mb-4">Únete a SportHora y mejora la gestión de tus canchas.</p>
+    <hr style="width:60px; border:2px solid #ff2c7d; margin:0 auto 40px;">
+
+    <button type="button" class="btn btn-teal btn-lg" style="background-color:#0dc5c1; color:#fff; padding:0.75rem 2.5rem;" data-toggle="modal" data-target="#emailModal">contacto.sporthora&#64;gmail.com</button>
+
+    <!-- Modal para elegir cliente de correo -->
+    <div class="modal fade" id="emailModal" tabindex="-1" aria-labelledby="emailModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="emailModalLabel">Enviar correo a contacto.sporthora&#64;gmail.com</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar"><span aria-hidden="true">&times;</span></button>
+          </div>
+          <div class="modal-body d-flex flex-column gap-3">
+            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contacto.sporthora%40gmail.com" target="_blank" rel="noopener" class="btn btn-outline-danger d-flex align-items-center gap-2 justify-content-center">
+              <img src="https://www.gstatic.com/images/branding/product/1x/gmail_48dp.png" alt="Gmail" style="width:24px;height:24px;"> Abrir con Gmail
+            </a>
+            <a href="https://outlook.live.com/owa/?path=/mail/action/compose&to=contacto.sporthora%40gmail.com" target="_blank" rel="noopener" class="btn btn-outline-primary d-flex align-items-center gap-2 justify-content-center">
+              <img src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/outlook_48x1.svg" alt="Outlook" style="width:24px;height:24px;"> Abrir con Outlook
+            </a>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sección Cómo Funciona SportHora -->
+<section class="py-5" style="background-color:#f5f7fa;">
+  <div class="container">
+    <h2 class="text-center mb-4" style="font-weight:700; color:#1f3344;">¿Cómo Funciona SportHora?</h2>
+    <hr style="width:60px; border:2px solid #2f2f86; margin:0 auto 40px;">
+    <div class="row text-center">
+      <!-- Paso 1 -->
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="how-it-works-step p-4 rounded" style="background-color:#fff;">
+          <img src="assets/images/2.png" alt="Busca tu deporte" class="mb-3" style="width: 90px; height: 90px;">
+          <h4 style="color:#1f3344;">1. Busca</h4>
+          <p style="color:#40566b;">Encuentra tu deporte favorito y el centro deportivo que más te acomode.</p>
+        </div>
+      </div>
+      <!-- Paso 2 -->
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="how-it-works-step p-4 rounded" style="background-color:#fff;">
+          <img src="assets/images/3.png" alt="Elige horario" class="mb-3" style="width: 90px; height: 90px;">
+          <h4 style="color:#1f3344;">2. Elige</h4>
+          <p style="color:#40566b;">Selecciona el día y la hora que prefieras para tu actividad.</p>
+        </div>
+      </div>
+      <!-- Paso 3 -->
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="how-it-works-step p-4 rounded" style="background-color:#fff;">
+          <img src="assets/images/4.png" alt="Reserva y paga" class="mb-3" style="width: 90px; height: 90px;">
+          <h4 style="color:#1f3344;">3. Reserva</h4>
+          <p style="color:#40566b;">Confirma tu reserva de forma rápida y segura. ¡Puedes pagar en línea o en el centro!</p>
+        </div>
+      </div>
+      <!-- Paso 4 -->
+      <div class="col-md-6 col-lg-3 mb-4">
+        <div class="how-it-works-step p-4 rounded" style="background-color:#fff;">
+          <img src="assets/images/5.png" alt="Disfruta del juego" class="mb-3" style="width: 90px; height: 90px;">
+          <h4 style="color:#1f3344;">4. Disfruta</h4>
+          <p style="color:#40566b;">¡Todo listo! Preséntate a jugar y disfruta de tu deporte.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-dark text-white text-center py-4">
+  <div class="container">
+    <p>&copy; 2025 SportHora. Todos los derechos reservados.</p>
+    <p>
+      <a href="#" class="text-white mx-2">Sobre Nosotros</a> |
+      <a href="#" class="text-white mx-2">Términos y Condiciones</a> |
+      <a href="#" class="text-white mx-2">Política de Privacidad</a>
+    </p>
+  </div>
+</footer> 

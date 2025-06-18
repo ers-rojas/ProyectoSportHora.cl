@@ -31,15 +31,29 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'users',
+    'centros_deportivos',
+    'reservas',
+    'reseñas',
+    'mensajes',
+    'auditorias', 
+    'productos', 
+    'suscripciones', 
+    'pagos',
+    'reportes',
+
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', 
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -74,8 +88,15 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sporthora_db',        # Nombre de tu base de datos MySQL (ya la creaste)
+        'USER': 'root',               # Tu usuario de MySQL
+        'PASSWORD': 'rootsam2025',     # Tu contraseña de MySQL
+        'HOST': 'localhost',          # O la IP/nombre de tu servidor MySQL
+        'PORT': '3306',               # Puerto de MySQL (el predeterminado es 3306)
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
     }
 }
 
@@ -120,3 +141,32 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configuración de CORS
+CORS_ALLOW_ALL_ORIGINS = False # Mejor especificar orígenes permitidos por seguridad
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:4200",  # Origen de tu aplicación Angular
+    "http://127.0.0.1:4200", # Por si acaso usa 127.0.0.1, muy común
+]
+CORS_ALLOW_HEADERS = [
+    'accept',
+    'accept-encoding',
+    'authorization',
+    'content-type',
+    'dnt',
+    'origin',
+    'user-agent',
+    'x-csrftoken',
+    'x-requested-with',
+]
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
+
+# Configuración del modelo de Usuario personalizado
+AUTH_USER_MODEL = 'users.Usuario'

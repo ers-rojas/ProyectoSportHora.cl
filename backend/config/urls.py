@@ -15,8 +15,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from .views import api_root_view # Importa la nueva vista para la raíz
 
 urlpatterns = [
+    path('', api_root_view, name='api_root'), # Vista para la URL raíz (/)
     path('admin/', admin.site.urls),
+    # Incluye las URLs de tus APIs aquí
+    path('api/', include('users.urls')),
+    path('api/', include('centros_deportivos.urls')), # Incluye las URLs de la app 'centros_deportivos'
+    path('api/', include('reservas.urls')), 
+    path('api/', include('reseñas.urls')), 
+    path('api/', include('mensajes.urls')), 
+    path('api/', include('auditorias.urls')), 
+    path('api/', include('productos.urls')), 
+    path('api/', include('suscripciones.urls')), 
+    path('api/', include('pagos.urls')), 
+    path('api/', include('reportes.urls')), 
+
 ]

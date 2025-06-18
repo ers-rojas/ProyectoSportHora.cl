@@ -1,0 +1,72 @@
+<!-- =========================================
+  Nuevo diseño inspirado en la pantalla enviada
+========================================== -->
+
+<!-- Barra superior con logo y campana de notificaciones -->
+<header class="top-bar d-flex align-items-center justify-content-center px-3 py-2 bg-white position-sticky">
+  <h5 class="logo-text mr-auto mb-0 font-weight-bold">SportHora.cl</h5>
+  <img src="/assets/images/ICONOnotificacion.png" alt="Notificaciones" class="notif-icon ml-auto" />
+</header>
+
+<!-- Contenido principal -->
+<main class="content-wrapper d-flex flex-column align-items-center py-4">
+  <!-- Saludo -->
+  <h4 class="greeting mb-4">Hola <strong>esteban</strong></h4>
+
+  <!-- Cuadrícula de accesos rápidos -->
+  <section class="quick-grid w-100 mb-4 px-3" style="max-width:600px;">
+    <div class="row no-gutters">
+      <!-- Deportes -->
+      <div class="col-6 p-2">
+        <a routerLink="/usuario/deporte" class="category-card deportes-card text-white d-flex align-items-center justify-content-center p-3 text-decoration-none">
+          <h6 class="m-0">Deportes</h6>
+        </a>
+      </div>
+      <!-- Centros Deportivos -->
+      <div class="col-6 p-2">
+        <div class="category-card centros-card text-white d-flex align-items-center justify-content-center p-3">
+          <h6 class="m-0">Centros deportivos</h6>
+        </div>
+      </div>
+      <!-- Promo -->
+      <div class="col-6 p-2">
+        <div class="category-card promo-card text-white d-flex align-items-center justify-content-center p-3">
+          <h6 class="m-0">Promo</h6>
+        </div>
+      </div>
+      <!-- Eventos -->
+      <div class="col-6 p-2">
+        <div class="category-card eventos-card text-white d-flex align-items-center justify-content-center p-3">
+          <h6 class="m-0">Eventos</h6>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Favoritos -->
+  <section class="favorites-card w-100 mb-5 px-3" style="max-width:600px;">
+    <div class="card shadow-sm p-3">
+      <div class="d-flex align-items-center mb-2">
+        <span class="mr-2" style="font-size:2rem;">❤️</span>
+        <h6 class="m-0 font-weight-bold">MIS CLUBES FAVORITOS</h6>
+      </div>
+      <p class="small mb-0 text-muted">Recuerda que puedes marcar el club que desees como favorito</p>
+    </div>
+  </section>
+</main>
+
+<!-- Bottom navigation -->
+<footer class="bottom-nav d-flex justify-content-around px-3 py-2">
+  <a routerLink="/usuario" class="nav-item text-center text-dark">
+    <img src="/assets/images/ICONOgps.png" alt="Inicio" class="nav-icon"><br>
+    <small>INICIO</small>
+  </a>
+  <a routerLink="/usuario/reservas" class="nav-item text-center text-dark">
+    <img src="/assets/images/ICONOreservar.png" alt="Reservas" class="nav-icon"><br>
+    <small>RESERVAS</small>
+  </a>
+  <a routerLink="/usuario/perfil" class="nav-item text-center text-dark">
+    <img src="/assets/images/ICONOperfil.png" alt="Perfil" class="nav-icon"><br>
+    <small>PERFIL</small>
+  </a>
+</footer> 

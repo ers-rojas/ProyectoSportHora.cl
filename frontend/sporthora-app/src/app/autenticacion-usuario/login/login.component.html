@@ -1,0 +1,41 @@
+<!-- Top navigation -->
+<nav class="top-bar d-flex align-items-center px-3 py-2">
+  <a routerLink="/home" class="text-secondary d-flex align-items-center mr-auto">
+    <span class="mr-1" style="font-size:1.2rem;">←</span> Volver
+  </a>
+</nav>
+
+<!-- Main login area -->
+<div class="d-flex flex-column align-items-center py-5 login-container">
+  <h5 class="mb-4 font-weight-normal">Ingresa tu email y clave</h5>
+  <form class="w-100" style="max-width:420px;">
+    <div class="form-group mb-3">
+      <input type="email" class="form-control" placeholder="Email" required>
+    </div>
+    <div class="form-group mb-2 position-relative">
+      <input [type]="showPassword ? 'text' : 'password'" class="form-control" placeholder="Clave" required>
+      <img class="toggle-pass" (click)="togglePassword()" [src]="showPassword ? '/assets/images/ICONOojoCerrado.png' : '/assets/images/ICONOojoAbierto.png'" alt="toggle" />
+    </div>
+
+    <p class="text-center text-muted small mb-4">Si tienes problemas para ingresar, contáctanos a contacto&#64;sporthora.com</p>
+
+    <button type="submit" class="btn btn-success btn-block rounded-pill mb-3" style="background-color:#b2d67a; border:none; font-size:1.2rem;">Ingresar</button>
+
+    <div class="text-center mb-4">
+      <a href="" class="text-dark">Olvidé mi contraseña</a>
+    </div>
+
+    <p class="text-center mb-2">¿Aún no tienes cuenta?</p>
+    <button routerLink="/auth/register" type="button" class="btn btn-primary btn-block rounded-pill" style="background-color:#2f2f86; border:none; font-size:1.1rem;">Regístrate aquí</button>
+  </form>
+</div>
+
+<!-- Bottom nav placeholder -->
+<footer class="bottom-nav d-flex justify-content-around px-3 py-2">
+  <a routerLink="/usuario" class="nav-item text-center">
+    <img src="/assets/images/ICONOgps.png" alt="Inicio" class="nav-icon"><br><small>INICIO</small></a>
+  <a href="#" class="nav-item text-center">
+    <img src="/assets/images/ICONOreservar.png" alt="Reservas" class="nav-icon"><br><small>RESERVAS</small></a>
+  <a href="#" class="nav-item text-center">
+    <img src="/assets/images/ICONOperfil.png" alt="Perfil" class="nav-icon"><br><small>PERFIL</small></a>
+</footer> 

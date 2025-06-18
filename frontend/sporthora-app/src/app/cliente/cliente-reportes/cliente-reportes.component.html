@@ -1,0 +1,102 @@
+<div class="layout d-flex">
+  <!-- Sidebar -->
+  <aside class="sidebar d-flex flex-column p-3">
+    <h4 class="brand mb-4">SportHora</h4>
+    <nav class="flex-grow-1">
+      <ul class="list-unstyled">
+        <li><a routerLink="/cliente" class="nav-link">Inicio</a></li>
+        <li><a routerLink="/cliente-reservas" class="nav-link">Reservas</a></li>
+        <li><a routerLink="/cliente-canchas" class="nav-link">Cancha</a></li>
+        <li><a routerLink="/cliente-reportes" class="nav-link active">Reportes</a></li>
+        <li><a routerLink="/cliente-pagos" class="nav-link">Pagos</a></li>
+      </ul>
+    </nav>
+    <hr>
+    <ul class="list-unstyled mb-auto">
+      <li><a routerLink="#" class="nav-link">Configuración</a></li>
+      <li><a routerLink="#" class="nav-link">Notificaciones</a></li>
+      <li><a routerLink="#" class="nav-link">Buscar</a></li>
+      <li><a routerLink="#" class="nav-link">Ayuda</a></li>
+    </ul>
+    <div class="profile mt-auto pt-3 border-top">
+      <a routerLink="#" class="nav-link">Perfil</a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="content flex-grow-1 p-4">
+    <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+      <h2 class="m-0 d-flex align-items-center">
+        <span class="cursor-pointer">Reportes generales ≡</span>
+        <i class="fas fa-caret-down ml-2"></i>
+      </h2>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-sm btn-dark">+ Nuevo</button>
+      </div>
+    </div>
+
+    <!-- Cuadro de gráficos y métricas -->
+    <div class="card p-3 mb-3">
+      <div class="row">
+        <div class="col-lg-6 mb-3">
+          <div class="card h-100 p-3">
+            <h6 class="font-weight-bold mb-2">Reservas Mensuales</h6>
+            <div style="height:260px;">
+              <canvas baseChart [data]="lineReservas" [options]="optionsLine" [type]="'line'"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+          <div class="card h-100 p-3">
+            <h6 class="font-weight-bold mb-2">Estado de Reservas</h6>
+            <div style="height:260px;">
+              <canvas baseChart [data]="pieData" [options]="pieOptions" [type]="'pie'"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="metrics-row d-flex flex-wrap gap-2 text-center mt-2">
+        <div class="flex-fill mb-2" style="min-width:150px;" *ngFor="let card of [
+          {t:'Total reservas',v:totalReservas},
+          {t:'Reservas confirmadas',v:reservasConfirmadas},
+          {t:'Reservas canceladas',v:reservasCanceladas},
+          {t:'Ingresos totales',v:ingresosTotales | currency:'CLP':'symbol':'1.0'},
+          {t:'Crecimiento Mensual',v:crecimientoMensual+'%'}
+        ]">
+          <div class="summary-card py-3">
+            <small class="text-uppercase">{{ card.t }}</small>
+            <h3 class="m-0 font-weight-bold">{{ card.v }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tabla resumen -->
+    <div class="card p-3">
+      <h5 class="mb-3 font-weight-bold">Resumen de los Datos Finales</h5>
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered mb-0 small">
+          <thead>
+            <tr>
+              <th>Fecha</th><th>Nombre</th><th>Método de Pago</th><th>Detalle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let r of registros">
+              <td>{{ r.fecha }}</td><td>{{ r.nombre }}</td><td>{{ r.pago }}</td><td>{{ r.detalle }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <nav aria-label="Paginación reportes" class="mt-2">
+          <ul class="pagination pagination-sm justify-content-center mb-0">
+            <li class="page-item disabled"><span class="page-link">‹ atrás</span></li>
+            <li class="page-item active"><span class="page-link">1</span></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
+            <li class="page-item"><a class="page-link" href="javascript:void(0)">siguiente ›</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </main>
+</div> 
